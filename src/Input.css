@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue, 0 0 20px blue;
+  }
+  50% {
+    box-shadow: 0 0 10px lightblue, 0 0 20px lightblue, 0 0 30px lightblue, 0 0 40px lightblue;
+  }
+  100% {
+    box-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 15px blue, 0 0 20px blue;
+  }
+}
+
+/* Mengaplikasikan efek pada tombol */
+.glowing-btn {
+  position: relative;
+  background-color: #1d4ed8; /* Biru tua */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  animation: glow 1.5s infinite alternate;
+}
+
+.glowing-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Tombol spesifik */
+.glowing-btn-login {
+  background-color: #1d4ed8; /* Biru Tua */
+}
+
+.glowing-btn-register {
+  background-color: #10b981; /* Hijau untuk daftar */
+}
+
+.glowing-btn-forgot-password {
+  background-color: #ef4444; /* Merah untuk forgot password */
+}

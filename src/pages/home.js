@@ -1,7 +1,11 @@
 import React from "react";
-import tailwind from "../Input.css";
 
 const Home = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    window.location.reload();
+  };
+
   return (
     <div className="bg-white p-4">
       <h2 className="text-2xl mb-4">
@@ -14,6 +18,12 @@ const Home = () => {
         Silakan pilih menu di atas untuk mulai memesan atau melihat riwayat
         pemesanan Anda.
       </p>
+      <button
+        onClick={handleLogout}
+        className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
+      >
+        Keluar
+      </button>
     </div>
   );
 };

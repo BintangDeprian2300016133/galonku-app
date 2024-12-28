@@ -7,6 +7,8 @@ const Order = () => {
   const [order, setOrder] = useState(null);
 
   const handleOrderSubmit = (newOrder) => {
+    // Menambahkan status "Menunggu" saat pesanan dibuat
+    newOrder.status = "Menunggu";
     saveOrder(newOrder); // Simpan pesanan ke localStorage
     setOrder(newOrder); // Set order untuk ditampilkan di ringkasan
   };
