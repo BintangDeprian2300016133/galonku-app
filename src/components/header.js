@@ -2,8 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/qyara_tirta_jaya_logo.png"; // Import logo
 
-const Header = () => {
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+const Header = ({ cart, addToCart, removeFromCart, updateQuantity }) => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; // Pastikan nilai boolean
   const navigate = useNavigate();
 
   // Fungsi untuk logout
@@ -25,19 +25,33 @@ const Header = () => {
           <h1 className="text-2xl font-semibold">Qyara Tirta Jaya</h1>
         </div>
 
-        {/* Tombol Logout di Pojok Kanan Atas */}
-        {isLoggedIn && (
-          <button
-            onClick={handleLogout}
-            className="absolute top-4 right-4 bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600 transition duration-300"
-          >
-            Logout
-          </button>
-        )}
+        {/* Logout dan Keranjang */}
+        <div className="flex items-center space-x-4">
+          {/* Tombol Keranjang */}
+          {isLoggedIn && (
+            <Link
+              to="/checkout"
+              className="bg-teal-500 text-sm px-3 py-1 rounded hover:bg-teal-600 transition duration-300"
+            >
+              Cart ({cart?.length || 0}){" "}
+              {/* Menampilkan jumlah item di keranjang */}
+            </Link>
+          )}
+
+          {/* Tombol Logout */}
+          {isLoggedIn && (
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600 transition duration-300"
+            >
+              Logout
+            </button>
+          )}
+        </div>
       </div>
 
-      {/* Navigasi di Bagian Bawah Kanan */}
-      <nav className="absolute bottom-0 right-0 mr-6 mb-2 flex space-x-4">
+      {/* Navigasi */}
+      <nav className="mt-4 flex justify-center space-x-6">
         <Link
           to="/"
           className="text-white hover:text-teal-200 hover:underline transition duration-300"

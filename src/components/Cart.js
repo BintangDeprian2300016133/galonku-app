@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import galonKosongImg from "../assets/images/GalonKosong.jpeg"; // Pastikan file gambar berada di folder assets
-import galonIsiUlangImg from "../assets/images/GalonIsiUlang.jpeg";
-import galonAquaImg from "../assets/images/GalonAqua.jpeg";
+import galonKosongImg from "../assets/galon-kosong.png"; // Pastikan file gambar berada di folder assets
+import galonIsiUlangImg from "../assets/galon-isi-ulang.png";
+import galonAquaImg from "../assets/galon-aqua.png";
 
 const Home = ({ addToCart }) => {
   const [selectedProduct, setSelectedProduct] = useState(null); // Produk yang dipilih
