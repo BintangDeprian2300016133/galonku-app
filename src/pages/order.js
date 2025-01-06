@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import OrderForm from "../components/orderform";
 import OrderSummary from "../components/ordersummary";
-import CartDropdown from "../components/Cart/CartDropdown";
+import CartDropdown from "../components/Cart/CartDropdown"; // Gunakan CartDropdown
 import { saveOrder, getCart, saveCart } from "../utils/storage";
 
 const Order = ({ onOrderSubmit }) => {
@@ -22,6 +22,20 @@ const Order = ({ onOrderSubmit }) => {
     if (onOrderSubmit) onOrderSubmit(newOrder);
   };
 
+  const handleUpdateQuantity = (id, newQuantity) => {
+    const updatedCart = cart.map((item) =>
+      item.id === id ? { ...item, quantity: newQuantity } : item
+    );
+    setCart(updatedCart);
+    saveCart(updatedCart);
+  };
+
+  const handleRemoveFromCart = (id) => {
+    const updatedCart = cart.filter((item) => item.id !== id);
+    setCart(updatedCart);
+    saveCart(updatedCart);
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4 text-center">Halaman Pemesanan</h1>
@@ -31,7 +45,14 @@ const Order = ({ onOrderSubmit }) => {
         onOrderSubmit={handleOrderSubmit}
       />
 
-      <CartDropdown cart={cart} />
+      {/* Tambahkan CartDropdown */}
+      <div className="mt-4">
+        <CartDropdown
+          cart={cart}
+          updateQuantity={handleUpdateQuantity}
+          removeFromCart={handleRemoveFromCart}
+        />
+      </div>
 
       {order ? (
         <div className="mt-8">

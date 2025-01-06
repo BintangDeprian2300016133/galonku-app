@@ -54,7 +54,7 @@ const OrderForm = () => {
     }
 
     if (name === "selectedEWallet") {
-      setBarcode(`/path/to/barcode/${value.toLowerCase()}.png`);
+      setBarcode(`/path/to/barcode/${value.toLowerCase()}.jpeg`);
     }
 
     setFormData({ ...formData, [name]: value });

@@ -14,7 +14,9 @@ const CartSummary = ({ cart = [] }) => {
     <div className="p-4 border rounded-md">
       <h2 className="text-lg font-bold mb-2">Cart Summary</h2>
       <p>Total Items: {totalItems}</p>
-      <p>Total Price: ${totalPrice.toFixed(2)}</p>
+      <p>
+        Total Price: Rp {totalPrice.toLocaleString("id-ID")} {/* Menggunakan toLocaleString dengan kode lokal Indonesia */}
+      </p>
     </div>
   );
 };
